@@ -4,7 +4,7 @@
 # my custom executable scripts
 export PATH="$HOME/bin:$PATH"
 
-# Path to your oh-my-zsh installatio.
+# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # use neovim as default editor (not sure how it work)
@@ -112,21 +112,29 @@ source $HOME/aliases.sh
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#homebrew
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Set up fzf key bindings and fuzzy comletion
+# Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
 # fzf alt c binding: https://github.com/junegunn/fzf/issues/164
 bindkey "ç" fzf-cd-widget
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # fnm
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/andriikukuruza/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # tmux bootstrap
 source $HOME/tmux-bootstrap.sh
