@@ -2,7 +2,7 @@
 let mapleader=" "
 
 """ Common settings -------------------------
-set scrolloff=999
+set scrolloff=5
 set incsearch
 set nu
 
