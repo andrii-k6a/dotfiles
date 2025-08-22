@@ -58,3 +58,6 @@ background = #21151d
 # font
 font-family-italic = VictorMono
 font-style-italic = "Bold Italic"
+
+# scrollback history limit: 64MB
+scrollback-limit = 67108864
