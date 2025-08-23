@@ -3,10 +3,10 @@
 rm -f ~/.tmux.conf
 ln -s $(pwd)/.tmux.conf ~/.tmux.conf
 
-# NOTE: '~/bin' must be on PATH 
-rm -f ~/bin/tmx
+# NOTE: '~/.local/bin' must be on PATH (see .zshrc)
+rm -f ~/.local/bin/tmx
 chmod +x tmx
-ln -s $(pwd)/tmx ~/bin/tmx
+ln -s $(pwd)/tmx ~/.local/bin/tmx
 
 rm -f ~/tmux-bootstrap.sh
 ln -s $(pwd)/tmux-bootstrap.sh ~/tmux-bootstrap.sh
