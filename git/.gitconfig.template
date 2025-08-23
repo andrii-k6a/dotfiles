@@ -1,0 +1,51 @@
+[user]
+	name = ${GIT_USER_NAME}
+	email = ${GIT_USER_EMAIL}
+[core]
+	autocrlf = input
+	editor = nvim
+	excludesfile = ~/.gitignore
+[push]
+	autosetupremote = true
+	default = simple
+	followTags = true
+[init]
+	defaultbranch = main
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	lg = log --oneline --decorate --all --graph
+	amend = commit --amend
+	force = push --force-with-lease
+	staash = stash --all
+	bb = !better-branch
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[tag]
+	sort = version:refname
+[help]
+	autocorrect = prompt
+
