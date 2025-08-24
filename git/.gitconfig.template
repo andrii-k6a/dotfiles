@@ -25,15 +25,22 @@
 	diff = auto
 	status = auto
 [alias]
-	st = status
-	co = checkout
-	br = branch
-	ci = commit
-	lg = log --oneline --decorate --all --graph
+    a = add
+    aa = add .
 	amend = commit --amend
-	force = push --force-with-lease
-	staash = stash --all
 	bb = !better-branch
+    bblame = blame -w -C -C -C
+	co = checkout
+	cob = checkout -b
+	cm = commit -m
+    cfg = config --list
+	force = push --force-with-lease
+	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    pop = stash pop
+    rmb = branch -D
+	st = status
+	staash = stash --all
+    wdiff = diff --word-diff
 [branch]
 	sort = -committerdate
 [column]
