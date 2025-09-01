@@ -142,9 +142,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/andriikukuruza/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+### RANCHER DESKTOP
+export PATH="$HOME/.rd/bin:$PATH"
 
 # tmux bootstrap
 source $HOME/tmux-bootstrap.sh
