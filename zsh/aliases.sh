@@ -8,3 +8,4 @@ vim() {
 alias lsd="lsd -1X"
 alias zshconfig="vim ~/.zshrc"
 alias g="git"
+alias oc="opencode"
