@@ -4,6 +4,9 @@
 # my custom executable scripts
 export PATH="$HOME/.local/bin:$PATH"
 
+# go binaries default location
+export PATH="$HOME/go/bin:$PATH:"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
