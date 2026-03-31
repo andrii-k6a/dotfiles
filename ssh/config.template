@@ -1,0 +1,55 @@
+Host github.com
+  HostName github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_<keytype>
+  IdentitiesOnly yes
+  PreferredAuthentications publickey
+
+Host <org>-github
+  HostName github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/<org>_github_<keytype>
+  IdentitiesOnly yes
+  PreferredAuthentications publickey
+
+Host gitlab.com
+  HostName gitlab.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_<keytype>
+  IdentitiesOnly yes
+  PreferredAuthentications publickey
+
+Host <org>-gitlab
+  HostName gitlab.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/<org>_gitlab_<keytype>
+  IdentitiesOnly yes
+  PreferredAuthentications publickey
+
+Host bitbucket.org
+  HostName bitbucket.org
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_<keytype>
+  IdentitiesOnly yes
+  PreferredAuthentications publickey
+
+Host <org>-bitbucket
+  HostName bitbucket.org
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/<org>_bitbucket_<keytype>
+  IdentitiesOnly yes
+  PreferredAuthentications publickey
+
+Host <org>-<service>
+  HostName <internal-git-hostname>
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/<org>_<service>_<keytype>
+  IdentitiesOnly yes
+  PreferredAuthentications publickey
