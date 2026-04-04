@@ -61,3 +61,7 @@ font-style-italic = "Bold Italic"
 
 # scrollback history limit: 64MB
 scrollback-limit = 67108864
+
+# Pi: https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/terminal-setup.md#ghostty
+keybind = alt+backspace=text:\x1b\x7f
+
