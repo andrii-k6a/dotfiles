@@ -148,6 +148,9 @@ eval "$(pyenv init - zsh)"
 ### RANCHER DESKTOP
 export PATH="$HOME/.rd/bin:$PATH"
 
+# Local overrides
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
 # tmux bootstrap
 source $HOME/tmux-bootstrap.sh
 
