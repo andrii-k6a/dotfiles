@@ -131,11 +131,14 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
 # bun completions
-[ -s "/Users/andriikukuruza/.bun/_bun" ] && source "/Users/andriikukuruza/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# deno
+. "$HOME/.deno/env"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
