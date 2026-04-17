@@ -39,6 +39,8 @@ brew "jq"
 brew "gh"
 brew "terraform"
 brew "go"
+brew "hf"
+brew "llama.cpp"
 
 # Extra tools
 brew "opencode"

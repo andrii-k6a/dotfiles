@@ -11,7 +11,7 @@ Personal dotfiles for a macOS development setup built around Ghostty, tmux, Neov
 - **Editors:** Neovim, IdeaVim
 - **Coding agents:** Pi, opencode
 - **Runtime managers:** fnm, pyenv, Bun, SDKMAN!
-- **CLI tools:** ripgrep, fd, bat, lsd, jq, GitHub CLI, Terraform, rtk
+- **CLI tools:** ripgrep, fd, bat, lsd, jq, GitHub CLI, Terraform, rtk, hf, llama.cpp
 - **Fonts:** Nerd Fonts (`FiraCode Nerd Font`, `Meslo LG Nerd Font`, `Victor Mono Nerd Font`)
 
 ## Repository layout
