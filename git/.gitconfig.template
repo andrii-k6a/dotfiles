@@ -12,7 +12,9 @@
 [init]
 	defaultbranch = main
 [merge]
-	tool = vimdiff
+	tool = nvim-fugitive
+[mergetool "nvim-fugitive"]
+	cmd = nvim -f -c "Gdiffsplit!" "$MERGED"
 [diff]
 	tool = vimdiff
 	algorithm = histogram
