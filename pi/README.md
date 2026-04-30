@@ -21,6 +21,8 @@ Skill catalogs and collections for inspiration:
 - [anthropics/skills](https://github.com/anthropics/skills) — official Anthropic skills (docx, pdf, pptx, xlsx, web dev)
 - [openai/skills](https://github.com/openai/skills) — official OpenAI skills
 - [obra/superpowers](https://github.com/obra/superpowers) — Jesse Vincent's curated skill pack
+- [contains-studio/agents](https://github.com/contains-studio/agents) — Contains Studio's collection of agents
+- [mattpocock/skills](https://github.com/mattpocock/skills) — Matt Pocock's skills collection
 
 ## Adding a third-party package
 
