@@ -15,6 +15,12 @@ Registers this directory as a local Pi package and installs the third-party pack
 ## Adding a skill or theme
 
 Drop it under `skills/<name>/SKILL.md` or `themes/<name>.json` and commit. Pi picks it up on next start (or `/reload`).
+Skill catalogs and collections for inspiration:
+
+- [skills.sh](https://skills.sh/) — searchable index of community skills
+- [anthropics/skills](https://github.com/anthropics/skills) — official Anthropic skills (docx, pdf, pptx, xlsx, web dev)
+- [openai/skills](https://github.com/openai/skills) — official OpenAI skills
+- [obra/superpowers](https://github.com/obra/superpowers) — Jesse Vincent's curated skill pack
 
 ## Adding a third-party package
 
