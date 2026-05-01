@@ -22,6 +22,7 @@ Personal dotfiles for a macOS development setup built around Ghostty, tmux, Neov
 - `starship/` — prompt config
 - `git/` — git config template, aliases, helper scripts
 - `idea/` — IdeaVim config
+- `pi/` — Pi package with skills, themes, and package installer
 - `ssh/` — SSH setup notes and config template
 - `Brewfile` — curated Homebrew bundle for this setup
 
@@ -42,6 +43,12 @@ Then link the configs you want:
 (cd starship && ./symlink.sh)
 (cd git && ./symlink.sh)
 (cd idea && ./symlink.sh)
+```
+
+Install Pi package resources:
+
+```sh
+(cd pi && ./install.sh)
 ```
 
 ## Notes
