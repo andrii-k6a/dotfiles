@@ -5,6 +5,7 @@ packages=(
   "git:github.com/andrii-k6a/pi-draw"
   "git:github.com/andrii-k6a/pi-head"
   "git:github.com/andrii-k6a/pi-nocchio"
+  "git:github.com/andrii-k6a/pi-telegram"
 )
 
 for p in "${packages[@]}"; do
