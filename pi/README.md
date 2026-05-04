@@ -10,7 +10,11 @@ This directory is itself a Pi package, so `skills/`, `prompts/`, and `themes/` l
 (cd pi && ./install.sh)
 ```
 
-Registers this directory as a local Pi package and installs the third-party packages listed in `install.sh`. Re-running is safe; unpinned packages may upgrade.
+Registers this directory as a local Pi package, installs the third-party packages listed in `install.sh`, and sets up the global agent context. Re-running is safe; unpinned packages may upgrade.
+
+## Global agent context
+
+`global-agent-context.md` contains lightweight personal context shared with every Pi session, such as editor, shell, terminal, Git, and Pi setup notes. Keep it concise and broadly useful.
 
 ## Adding a third-party package
 
