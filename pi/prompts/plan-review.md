@@ -2,7 +2,7 @@
 description: Generate a visual HTML plan review — current codebase state vs. proposed implementation plan
 argument-hint: "<plan-file> [codebase]"
 ---
-Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Then generate a comprehensive visual plan review as a self-contained HTML page, comparing the current codebase against a proposed implementation plan.
+Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Resolve all paths mentioned below relative to the loaded `visual-explainer` skill directory. Then generate a comprehensive visual plan review as a self-contained HTML page, comparing the current codebase against a proposed implementation plan.
 
 Follow the visual-explainer skill workflow. Read the reference template, CSS patterns, and mermaid theming references before generating. Use a blueprint/editorial aesthetic with current-state vs. planned-state panels, but vary fonts and palette from previous diagrams.
 
@@ -44,11 +44,11 @@ Verify each claim against the code and the plan. If something cannot be verified
 
 2. **Impact dashboard** — files to modify, files to create, files to delete, estimated lines added/removed, new test files planned, dependencies affected. Include a **completeness** indicator: whether the plan covers tests (green/red), docs updates (green/yellow/red), and migration/rollback (green/grey for N/A).
 
-3. **Current architecture** — Mermaid diagram of how the affected subsystem works *today*. Focus only on the parts the plan touches — don't diagram the entire codebase. Show the data flow, dependencies, and call paths that will change. Wrap in `.mermaid-wrap` with zoom controls (+/−/reset/expand buttons), Ctrl/Cmd+scroll zoom, click-and-drag panning, and click-to-expand (opens diagram full-size in new tab). See the "Mermaid Zoom Controls" section in `references/css-patterns.md` from the loaded skill for the full pattern including the `openMermaidInNewTab()` function. *Visual treatment: use matching Mermaid layout direction and node names as section 4 so the visual diff is obvious.*
+3. **Current architecture** — Mermaid diagram of how the affected subsystem works *today*. Focus only on the parts the plan touches — don't diagram the entire codebase. Show the data flow, dependencies, and call paths that will change. Wrap in `.mermaid-wrap` with zoom controls (+/−/reset/expand buttons), Ctrl/Cmd+scroll zoom, click-and-drag panning, and click-to-expand (opens diagram full-size in new tab). See the "Mermaid Zoom Controls" section in the loaded skill's `references/css-patterns.md` for the full pattern including the `openMermaidInNewTab()` function. *Visual treatment: use matching Mermaid layout direction and node names as section 4 so the visual diff is obvious.*
 
-4. **Planned architecture** — Mermaid diagram of how the subsystem will work *after* the plan is implemented. Use the same node names and layout direction as the current architecture diagram so the differences are visually obvious. Same zoom controls and click-to-expand as section 3. *Highlight new nodes with a glow or accent border, removed nodes with strikethrough or reduced opacity, changed edges with a different stroke color.*
+4. **Planned architecture** — Mermaid diagram of how the subsystem will work *after* the plan is implemented. Use the same node names and layout direction as the current architecture diagram so the differences are visually obvious. Same zoom controls and click-to-expand as section 3. *Highlight new nodes with an accent border or subtle tinted fill, removed nodes with strikethrough or reduced opacity, changed edges with a different stroke color.*
 
-5. **Change-by-change breakdown** — for each change in the plan, a side-by-side panel. Overflow prevention: apply `min-width: 0` on all grid/flex children and `overflow-wrap: break-word` on panels. Never use `display: flex` on `<li>` for marker characters — use absolute positioning instead (see the "Overflow Protection" section in `references/css-patterns.md` from the loaded skill).
+5. **Change-by-change breakdown** — for each change in the plan, a side-by-side panel. Overflow prevention: apply `min-width: 0` on all grid/flex children and `overflow-wrap: break-word` on panels. Never use `display: flex` on `<li>` for marker characters — use absolute positioning instead (see the "Overflow Protection" section in the loaded skill's `references/css-patterns.md`).
    - **Left (current):** what the code does now, with relevant snippets or function signatures
    - **Right (planned):** what the plan proposes, with the plan's own code examples if provided
    - **Rationale:** below each side-by-side panel, extract _why_ the plan chose this approach. Pull from the plan's reasoning, rejected alternatives section, or inline justifications. If the plan includes a "rejected alternatives" section, map those rejections to the specific changes they apply to. Flag changes where the plan says _what_ to do but not _why_ — these are pre-implementation cognitive debt.
@@ -78,9 +78,9 @@ Verify each claim against the code and the plan. If something cannot be verified
 
 **Visual hierarchy**: Sections 1-4 should dominate the viewport on load (hero depth for summary, elevated for architecture diagrams). Sections 6+ are reference material and should feel lighter (flat or recessed depth, compact layout, collapsible where appropriate).
 
-**Optional illustrations** — if `surf` CLI is available (`which surf`), consider generating a conceptual illustration of the planned system via `surf gemini --generate-image` when it would help the reader visualize the change. Embed as base64 data URI. See the "Generated Images" section in `references/css-patterns.md` from the loaded skill for container styles. Skip if surf isn't available or the plan is purely structural.
+**Optional illustrations** — if `surf` CLI is available (`which surf`), consider generating a conceptual illustration of the planned system via `surf gemini --generate-image` when it would help the reader visualize the change. Embed as base64 data URI. See the "Generated Images" section in the loaded skill's `references/css-patterns.md` for container styles. Skip if surf isn't available or the plan is purely structural.
 
-Include responsive section navigation. Use a current-vs-planned visual language throughout: blue/neutral for current state, green/purple for planned additions, amber for areas of concern, red for gaps or risks. Write to `~/.pi/visual-explainer/` and open in browser.
+Include responsive section navigation. Use a current-vs-planned visual language throughout: blue/neutral for current state, green/teal for planned additions, amber for areas of concern, red for gaps or risks. Write to `~/.pi/visual-explainer/` and open in browser.
 
 Ultrathink.
 

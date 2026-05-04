@@ -2,7 +2,7 @@
 
 CSS patterns, JS engine, slide type layouts, transitions, navigation chrome, and curated presets for self-contained HTML slide presentations. All slides are viewport-fit (100dvh), single-file, same philosophy as scrollable pages.
 
-**When to use slides:** Only when the user explicitly requests them — `/generate-slides`, `--slides` flag on an existing prompt, or natural language like "as a slide deck." Never auto-select slide format.
+**When to use slides:** Only when the user explicitly requests them — for example with natural language like "as a slide deck." Never auto-select slide format.
 
 **Before generating**, also read `./css-patterns.md` for shared patterns (Mermaid zoom controls, overflow protection, depth tiers, status badges) and `./libraries.md` for Mermaid theming, Chart.js, and font pairings. Those patterns apply to slides too — this file adds slide-specific patterns on top.
 

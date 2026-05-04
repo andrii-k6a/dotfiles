@@ -701,7 +701,7 @@ function initDiagram(shell) {
 document.querySelectorAll('.diagram-shell').forEach(initDiagram);
 ```
 
-This pattern removes all hardcoded IDs and supports unlimited diagrams per page. For the full implementation (including smart fit, pinch zoom, and shared drag state), use `templates/mermaid-flowchart.html` as the canonical source.
+This pattern removes all hardcoded IDs and supports unlimited diagrams per page. For the full implementation (including smart fit, pinch zoom, and shared drag state), use the skill root's `templates/mermaid-flowchart.html` as the canonical source.
 
 ## Grid Layouts
 

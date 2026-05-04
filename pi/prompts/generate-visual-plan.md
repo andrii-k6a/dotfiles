@@ -2,7 +2,7 @@
 description: Generate a visual HTML implementation plan — detailed feature specification with state machines, code snippets, and edge cases
 argument-hint: "<feature>"
 ---
-Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Then generate a comprehensive visual implementation plan for `$@` as a self-contained HTML page.
+Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Resolve all paths mentioned below relative to the loaded `visual-explainer` skill directory. Then generate a comprehensive visual implementation plan for `$@` as a self-contained HTML page.
 
 Follow the visual-explainer skill workflow. Read the reference template, CSS patterns, and mermaid theming references before generating. Use an editorial or blueprint aesthetic, but vary fonts and palette from previous diagrams.
 
@@ -89,7 +89,7 @@ Verify each against the code. If something cannot be verified, mark it as uncert
 - Use semantic accent colors: gold for primary accents, sage for "after"/success states, rose for "before"/warning states
 - Both light and dark themes must work
 
-**Optional hero image** — if `surf` CLI is available (`which surf`), consider generating a conceptual illustration that captures the feature's essence. Use for abstract concepts that benefit from visual metaphor. Skip for purely structural changes. Embed as base64 data URI using the `.hero-img-wrap` pattern from `references/css-patterns.md` in the loaded skill.
+**Optional hero image** — if `surf` CLI is available (`which surf`), consider generating a conceptual illustration that captures the feature's essence. Use for abstract concepts that benefit from visual metaphor. Skip for purely structural changes. Embed as base64 data URI using the `.hero-img-wrap` pattern from the loaded skill's `references/css-patterns.md`.
 
 **Code block requirements:**
 - Always use `white-space: pre-wrap` and `word-break: break-word`

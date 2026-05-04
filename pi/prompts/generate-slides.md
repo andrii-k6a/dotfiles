@@ -2,13 +2,13 @@
 description: Generate a stunning magazine-quality slide deck as a self-contained HTML page
 argument-hint: "<topic>"
 ---
-Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Then generate a slide deck for: $@
+Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Resolve all paths mentioned below relative to the loaded `visual-explainer` skill directory. Then generate a slide deck for: $@
 
-Follow the visual-explainer skill workflow. Read `templates/slide-deck.html`, `references/slide-patterns.md`, `references/css-patterns.md`, and `references/libraries.md` from the loaded `visual-explainer` skill directory before generating.
+Follow the visual-explainer skill workflow. Read the loaded skill's `templates/slide-deck.html`, `references/slide-patterns.md`, `references/css-patterns.md`, and `references/libraries.md` before generating.
 
-**Slide output is always opt-in.** Only generate slides when this command is invoked or the user explicitly asks for a slide deck.
+**Slide output is always opt-in.** Only generate slides when this prompt is invoked or the user explicitly asks for a slide deck.
 
-**Aesthetic:** Pick a distinctive direction from the 4 slide presets in `references/slide-patterns.md` from the loaded skill (Midnight Editorial, Warm Signal, Terminal Mono, Swiss Clean) or riff on the existing 8 aesthetic directions adapted for slides. Vary from previous decks. Commit to one direction and carry it through every slide.
+**Aesthetic:** Pick a distinctive direction from the 4 slide presets in the loaded skill's `references/slide-patterns.md` (Midnight Editorial, Warm Signal, Terminal Mono, Swiss Clean) or adapt one of the aesthetic directions from the skill. Vary from previous decks. Commit to one direction and carry it through every slide.
 
 **Narrative structure:** Slides have a temporal dimension — compose a story arc, not a list of sections. Start with impact (title), build context (overview), deep dive (content, diagrams, data), resolve (summary/next steps). Plan the slide sequence and assign a composition (centered, left-heavy, split, full-bleed) to each slide before writing HTML.
 

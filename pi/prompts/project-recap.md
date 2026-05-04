@@ -2,7 +2,7 @@
 description: Generate a visual HTML project recap — rebuild mental model of a project's current state, recent decisions, and cognitive debt hotspots
 argument-hint: "[window-or-context]"
 ---
-Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Then generate a comprehensive visual project recap as a self-contained HTML page.
+Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Resolve all paths mentioned below relative to the loaded `visual-explainer` skill directory. Then generate a comprehensive visual project recap as a self-contained HTML page.
 
 Follow the visual-explainer skill workflow. Read the reference template, CSS patterns, and mermaid theming references before generating. Use a warm editorial or paper/ink aesthetic with muted blues and greens, but vary fonts and palette from previous diagrams.
 
@@ -30,14 +30,14 @@ Follow the visual-explainer skill workflow. Read the reference template, CSS pat
 - For each, cite the source: the git command output that produced it, or the file:line where you read it
 Verify each claim against the code. If something cannot be verified, mark it as uncertain rather than stating it as fact. This fact sheet is your source of truth during HTML generation — do not deviate from it.
 
-**Optional hero image** — if `surf` CLI is available (`which surf`), consider generating a hero banner via `surf gemini --generate-image --aspect-ratio 16:9` that visually captures the project's identity or domain. Match the style to the page's palette. Embed as base64 data URI using the `.hero-img-wrap` pattern from `references/css-patterns.md` in the loaded skill. Place above or just below the title. Skip if surf isn't available — the page should stand on its own.
+**Optional hero image** — if `surf` CLI is available (`which surf`), consider generating a hero banner via `surf gemini --generate-image --aspect-ratio 16:9` that visually captures the project's identity or domain. Match the style to the page's palette. Embed as base64 data URI using the `.hero-img-wrap` pattern from the loaded skill's `references/css-patterns.md`. Place above or just below the title. Skip if surf isn't available — the page should stand on its own.
 
 **Diagram structure** — the page should include:
 1. **Project identity** — not the README blurb. A *current-state* summary: what this project does, who uses it, what stage it's at (early dev, stable, actively shipping features). Include version, key dependencies, and the one-sentence "elevator pitch" for someone who forgot what they were building.
-2. **Architecture snapshot** — Mermaid diagram of the system as it exists today. Focus on the conceptual modules and their relationships, not every file. Label nodes with what they do, not just file names. Wrap in `.mermaid-wrap` with zoom controls (+/−/reset/expand buttons), Ctrl/Cmd+scroll zoom, click-and-drag panning, and click-to-expand (opens diagram full-size in new tab). See the "Mermaid Zoom Controls" section in `references/css-patterns.md` from the loaded skill for the full pattern including the `openMermaidInNewTab()` function. *Visual treatment: this is the visual anchor — use hero depth (elevated container, larger padding, subtle accent-tinted background). The rest of the page hangs off this diagram.*
+2. **Architecture snapshot** — Mermaid diagram of the system as it exists today. Focus on the conceptual modules and their relationships, not every file. Label nodes with what they do, not just file names. Wrap in `.mermaid-wrap` with zoom controls (+/−/reset/expand buttons), Ctrl/Cmd+scroll zoom, click-and-drag panning, and click-to-expand (opens diagram full-size in new tab). See the "Mermaid Zoom Controls" section in the loaded skill's `references/css-patterns.md` for the full pattern including the `openMermaidInNewTab()` function. *Visual treatment: this is the visual anchor — use hero depth (elevated container, larger padding, subtle accent-tinted background). The rest of the page hangs off this diagram.*
 3. **Recent activity** — not raw git log. A human-readable narrative grouped by theme: feature work, bug fixes, refactors, infrastructure. Timeline visualization with the most significant changes called out. For each theme, a one-sentence summary of what happened and why it mattered.
 4. **Decision log** — key design decisions from the time window. Extracted from commit messages, conversation history, plan docs, progress docs. Each entry: what was decided, why, what was considered. This is the highest-value section for fighting cognitive debt — the reasoning that evaporates first.
-5. **State of things** — *visual treatment: use the KPI card pattern from `references/css-patterns.md` in the loaded skill — large hero numbers for working/broken/blocked/in-progress counts, with color-coded trend indicators.* A dashboard of:
+5. **State of things** — *visual treatment: use the KPI card pattern from the loaded skill's `references/css-patterns.md` — large hero numbers for working/broken/blocked/in-progress counts, with color-coded trend indicators.* A dashboard of:
    - What's working (stable, shipped, tested)
    - What's in progress (uncommitted work, open branches, active TODOs)
    - What's broken or degraded (known bugs, failing tests, tech debt items)
@@ -55,7 +55,7 @@ Verify each claim against the code. If something cannot be verified, mark it as 
    - Flag each with a severity and a concrete suggestion (e.g., "add a doc comment to `buildCoordinationInstructions` explaining the 4 coordination levels — this function is called from 3 places and the behavior is non-obvious")
 8. **Next steps** — inferred from recent activity, open TODOs, project trajectory. Not prescriptive — just "here's where the momentum was pointing when you left." Include any explicit next-step notes from progress docs or plan files.
 
-Include responsive section navigation. Use a warm, approachable visual language: muted blues and greens for architecture, amber callouts for cognitive debt hotspots, green/blue/amber/red for state-of-things status. Overflow prevention on any side-by-side or grid-based sections: apply `min-width: 0` on all grid/flex children and `overflow-wrap: break-word`. Never use `display: flex` on `<li>` for marker characters — use absolute positioning instead (see the "Overflow Protection" section in `references/css-patterns.md` from the loaded skill). Write to `~/.pi/visual-explainer/` and open in browser.
+Include responsive section navigation. Use a warm, approachable visual language: muted blues and greens for architecture, amber callouts for cognitive debt hotspots, green/blue/amber/red for state-of-things status. Overflow prevention on any side-by-side or grid-based sections: apply `min-width: 0` on all grid/flex children and `overflow-wrap: break-word`. Never use `display: flex` on `<li>` for marker characters — use absolute positioning instead (see the "Overflow Protection" section in the loaded skill's `references/css-patterns.md`). Write to `~/.pi/visual-explainer/` and open in browser.
 
 Ultrathink.
 

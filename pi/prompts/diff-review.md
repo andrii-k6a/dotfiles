@@ -2,7 +2,7 @@
 description: Generate a visual HTML diff review — before/after architecture comparison with code review analysis
 argument-hint: "[ref]"
 ---
-Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Then generate a comprehensive visual diff review as a self-contained HTML page.
+Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Resolve all paths mentioned below relative to the loaded `visual-explainer` skill directory. Then generate a comprehensive visual diff review as a self-contained HTML page.
 
 Follow the visual-explainer skill workflow. Read the reference template, CSS patterns, and mermaid theming references before generating. Use a GitHub-diff-inspired aesthetic with red/green before/after panels, but vary fonts and palette from previous diagrams.
 
@@ -35,8 +35,8 @@ Verify each claim against the code. If something cannot be verified, mark it as 
 **Diagram structure** — the page should include:
 1. **Executive summary** — not just a dry before/after. Lead with the *intuition*: why do these changes exist? What problem were they solving, what was the core insight? Then the factual scope (X files, Y lines, Z new modules). Aim for "aha moment" clarity — a reader who only sees this section should understand the essence of the change. *Visual treatment: this is the visual anchor — use hero depth (larger type 20-24px, subtle accent-tinted background, more padding than other sections).*
 2. **KPI dashboard** — lines added/removed, files changed, new modules, test counts. Include a **housekeeping** indicator: whether CHANGELOG.md was updated (green/red badge) and whether docs need changes (green/yellow/red).
-3. **Module architecture** — how the file structure changed, with a Mermaid dependency graph of the current state. Wrap in `.mermaid-wrap` with zoom controls (+/−/reset/expand buttons), Ctrl/Cmd+scroll zoom, click-and-drag panning, and click-to-expand (opens diagram full-size in new tab). See the "Mermaid Zoom Controls" section in `references/css-patterns.md` from the loaded skill for the full pattern including the `openMermaidInNewTab()` function.
-4. **Major feature comparisons** — side-by-side before/after panels for each significant area of change (UI, data flow, API surface, config, etc.). Overflow prevention: apply `min-width: 0` on all grid/flex children and `overflow-wrap: break-word` on panels. Never use `display: flex` on `<li>` for marker characters — use absolute positioning instead (see the "Overflow Protection" section in `references/css-patterns.md` from the loaded skill).
+3. **Module architecture** — how the file structure changed, with a Mermaid dependency graph of the current state. Wrap in `.mermaid-wrap` with zoom controls (+/−/reset/expand buttons), Ctrl/Cmd+scroll zoom, click-and-drag panning, and click-to-expand (opens diagram full-size in new tab). See the "Mermaid Zoom Controls" section in the loaded skill's `references/css-patterns.md` for the full pattern including the `openMermaidInNewTab()` function.
+4. **Major feature comparisons** — side-by-side before/after panels for each significant area of change (UI, data flow, API surface, config, etc.). Overflow prevention: apply `min-width: 0` on all grid/flex children and `overflow-wrap: break-word` on panels. Never use `display: flex` on `<li>` for marker characters — use absolute positioning instead (see the "Overflow Protection" section in the loaded skill's `references/css-patterns.md`).
 5. **Flow diagrams** — Mermaid flowchart, sequence, or state diagrams for any new lifecycle/pipeline/interaction patterns. Same zoom controls and click-to-expand as section 3.
 6. **File map** — full tree with color-coded new/modified/deleted indicators. *Visual treatment: compact — consider `<details>` collapsed by default for pages with many sections.*
 7. **Test coverage** — before/after test file counts and what's covered
@@ -60,7 +60,7 @@ Verify each claim against the code. If something cannot be verified, mark it as 
 
 **Visual hierarchy**: Sections 1-3 should dominate the viewport on load (hero depth, larger type, more padding). Sections 6+ are reference material and should feel lighter (flat or recessed depth, compact layout, collapsible where appropriate).
 
-**Optional illustrations** — if `surf` CLI is available (`which surf`), consider generating a hero banner or conceptual illustration via `surf gemini --generate-image` when it would enhance the page. Embed as base64 data URI. See the "Generated Images" section in `references/css-patterns.md` from the loaded skill for container styles. Skip if surf isn't available or the diff is purely structural.
+**Optional illustrations** — if `surf` CLI is available (`which surf`), consider generating a hero banner or conceptual illustration via `surf gemini --generate-image` when it would enhance the page. Embed as base64 data URI. See the "Generated Images" section in the loaded skill's `references/css-patterns.md` for container styles. Skip if surf isn't available or the diff is purely structural.
 
 Include responsive section navigation. Use diff-style visual language throughout: red for removed/before, green for added/after, yellow for modified, blue for neutral context. Write to `~/.pi/visual-explainer/` and open in browser.
 

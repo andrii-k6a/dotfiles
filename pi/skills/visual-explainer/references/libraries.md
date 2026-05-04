@@ -293,7 +293,7 @@ flowchart TD
 
 ### Diagram Type Examples
 
-These examples show Mermaid syntax only. When embedding a diagram in generated HTML, put the syntax inside the approved zoom wrapper pattern from `templates/mermaid-flowchart.html` or the slide-specific pattern from `templates/slide-deck.html`; do not emit a standalone `<pre class="mermaid">` block.
+These examples show Mermaid syntax only. When embedding a diagram in generated HTML, put the syntax inside the approved zoom wrapper pattern from the skill root's `templates/mermaid-flowchart.html` or the slide-specific pattern from the skill root's `templates/slide-deck.html`; do not emit a standalone `<pre class="mermaid">` block.
 
 **Flowchart with decisions:**
 ```mermaid

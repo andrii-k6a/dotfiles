@@ -2,9 +2,9 @@
 description: Verify the factual accuracy of a document against the actual codebase, correct inaccuracies in place
 argument-hint: "[file]"
 ---
-Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Then verify the factual accuracy of a document that makes claims about a codebase. Read the file, extract every verifiable claim, check each against the actual code and git history, correct inaccuracies in place, and add a verification summary.
+Use the `visual-explainer` skill. Read its `SKILL.md` and referenced templates before generating. Resolve all paths mentioned below relative to the loaded `visual-explainer` skill directory. Then verify the factual accuracy of a document that makes claims about a codebase. Read the file, extract every verifiable claim, check each against the actual code and git history, correct inaccuracies in place, and add a verification summary.
 
-For HTML files: read `references/css-patterns.md` from the loaded `visual-explainer` skill directory to match the existing page's styling when inserting the verification summary.
+For HTML files: read the loaded skill's `references/css-patterns.md` to match the existing page's styling when inserting the verification summary.
 
 **Target file** — determine what to verify from `$1`:
 - Explicit path: verify that specific file (`.html`, `.md`, or any text document)

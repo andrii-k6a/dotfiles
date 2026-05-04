@@ -26,20 +26,6 @@ Before generating HTML:
 - Keep the analysis scope proportional to the request. A component overview does not require mapping the whole repository.
 - Verify the artifact against the inspected evidence before delivery: every major box, edge, file reference, and claim should be traceable to something observed.
 
-## Available Commands
-
-Pi-native prompt templates are installed separately in the dotfiles prompt directory. Invoke them directly as slash commands after Pi reloads. The prompt templates are thin workflows; this `SKILL.md` plus `./templates/` and `./references/` are the source of truth for rendering quality.
-
-| Command | What it does |
-|---------|-------------|
-| `generate-web-diagram` | Generate an HTML diagram for any topic |
-| `generate-visual-plan` | Generate a visual implementation plan for a feature |
-| `generate-slides` | Generate a magazine-quality slide deck |
-| `diff-review` | Visual diff review with architecture comparison and code review |
-| `plan-review` | Compare a plan against the codebase with risk assessment |
-| `project-recap` | Mental model snapshot for context-switching back to a project |
-| `fact-check` | Verify accuracy of a document against actual code |
-
 ## Workflow
 
 ### 1. Think (5 seconds, not 5 minutes)
@@ -81,7 +67,7 @@ Vary the choice each time. If the last diagram was dark and technical, make the 
 - For text-heavy architecture overviews (card content matters more than topology): read `./templates/architecture.html`
 - For flowcharts, sequence diagrams, ER, state machines, mind maps, class diagrams, C4: read `./templates/mermaid-flowchart.html`
 - For data tables, comparisons, audits, feature matrices: read `./templates/data-table.html`
-- For slide deck presentations (when `--slides` flag is present or `/generate-slides` is invoked): read `./templates/slide-deck.html` and `./references/slide-patterns.md`
+- For slide deck presentations (when explicitly requested by the user): read `./templates/slide-deck.html` and `./references/slide-patterns.md`
 - For prose-heavy publishable pages (READMEs, articles, blog posts, essays): read the "Prose Page Elements" section in `./references/css-patterns.md` and "Typography by Content Voice" in `./references/libraries.md`
 
 **For CSS/layout patterns and SVG connectors**, read `./references/css-patterns.md`.
@@ -110,7 +96,7 @@ Vary the choice each time. If the last diagram was dark and technical, make the 
 
 **Mermaid containers:** Always center Mermaid diagrams with `display: flex; justify-content: center;`. Add zoom controls (+/−/reset/expand) to every `.mermaid-wrap` container. Include the click-to-expand JavaScript so clicking the diagram (or the ⛶ button) opens it full-size in a new tab.
 
-**⚠️ Never use a standalone `<pre class="mermaid">` outside a zoom wrapper.** It renders but has no zoom/pan controls — diagrams become tiny and unusable. For scrollable pages, use the full `diagram-shell` pattern from `templates/mermaid-flowchart.html`: the HTML structure (`.diagram-shell` > `.mermaid-wrap` > `.zoom-controls` + `.mermaid-viewport` > `.mermaid-canvas`), the CSS, and the JS module for zoom/pan/fit. For slide decks, use the slide-specific `.mermaid-wrap` pattern from `templates/slide-deck.html` / `references/slide-patterns.md`.
+**⚠️ Never use a standalone `<pre class="mermaid">` outside a zoom wrapper.** It renders but has no zoom/pan controls — diagrams become tiny and unusable. For scrollable pages, copy the full `diagram-shell` pattern from the skill's `templates/mermaid-flowchart.html`: the HTML structure (`.diagram-shell` > `.mermaid-wrap` > `.zoom-controls` + `.mermaid-viewport` > `.mermaid-canvas`), the CSS, and the JS module for zoom/pan/fit. For slide decks, use the slide-specific `.mermaid-wrap` pattern from the skill's `templates/slide-deck.html` and `references/slide-patterns.md`.
 
 **Mermaid scaling:** Diagrams with 10+ nodes render too small by default. For 10-12 nodes, increase `fontSize` in themeVariables to 18-20px and set `INITIAL_ZOOM` to 1.5-1.6. For 15+ elements, don't try to scale — use the hybrid pattern instead (simple Mermaid overview + CSS Grid cards). See "Architecture / System Diagrams" below.
 
@@ -332,7 +318,7 @@ Use these sparingly within visual pages to highlight key points or provide breat
 
 ## Slide Deck Mode
 
-An alternative output format for presenting content as a magazine-quality slide presentation instead of a scrollable page. **Opt-in only** — the agent generates slides when the user invokes `/generate-slides`, passes `--slides` to an existing prompt (e.g., `/diff-review --slides`), or explicitly asks for a slide deck. Never auto-select slide format.
+An alternative output format for presenting content as a magazine-quality slide presentation instead of a scrollable page. **Opt-in only** — generate slides only when the user explicitly asks for a slide deck. Never auto-select slide format.
 
 **Before generating slides**, read `./references/slide-patterns.md` (engine CSS, slide types, transitions, nav chrome, presets) and `./templates/slide-deck.html` (reference template showing all 10 types). Also read `./references/css-patterns.md` for shared patterns and `./references/libraries.md` for Mermaid/Chart.js theming.
 
@@ -346,9 +332,9 @@ An alternative output format for presenting content as a magazine-quality slide 
 
 **Compositional variety:** Consecutive slides must vary spatial approach — centered, left-heavy, right-heavy, split, edge-aligned, full-bleed. Three centered slides in a row means push one off-axis.
 
-**Curated presets:** Four slide-specific presets as starting points (Midnight Editorial, Warm Signal, Terminal Mono, Swiss Clean) plus the existing 8 aesthetic directions adapted for slides. Pick one and commit. See `slide-patterns.md` for preset CSS values.
+**Curated presets:** Four slide-specific presets as starting points (Midnight Editorial, Warm Signal, Terminal Mono, Swiss Clean), or adapt one of the aesthetic directions from this skill. Pick one and commit. See `slide-patterns.md` for preset CSS values.
 
-**`--slides` flag on existing prompts:** When a user passes `--slides` to `/diff-review`, `/plan-review`, `/project-recap`, or other prompts, the agent gathers data using the prompt's normal data-gathering instructions, then presents the content as a slide deck instead of a scrollable page. The slide version tells the same story with different structure and pacing — but the same breadth of coverage. Don't use the slide format as an excuse to summarize or skip sections that the scrollable version would have included.
+**Slide requests with data gathering:** If the request includes data-gathering instructions, complete them first, then present the content as a slide deck instead of a scrollable page. The slide version tells the same story with different structure and pacing — but the same breadth of coverage. Don't use the slide format as an excuse to summarize or skip sections that the scrollable version would have included.
 
 ## File Structure
 
