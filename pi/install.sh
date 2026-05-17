@@ -11,7 +11,7 @@ echo "Installing Pi AGENTS.md -> $agent_dir/AGENTS.md"
 ln -sfn "$pi_dir/global-agent-context.md" "$agent_dir/AGENTS.md"
 
 packages=(
-  "$pi_dir"
+  "git:github.com/andrii-k6a/pi-packages"
   "git:github.com/andrii-k6a/pi-tmux-branch"
   "git:github.com/andrii-k6a/pi-feedback"
   "git:github.com/andrii-k6a/pi-draw"
