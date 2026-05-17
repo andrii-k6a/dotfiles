@@ -12,12 +12,6 @@ ln -sfn "$pi_dir/global-agent-context.md" "$agent_dir/AGENTS.md"
 
 packages=(
   "git:github.com/andrii-k6a/pi-packages"
-  "git:github.com/andrii-k6a/pi-tmux-branch"
-  "git:github.com/andrii-k6a/pi-feedback"
-  "git:github.com/andrii-k6a/pi-draw"
-  "git:github.com/andrii-k6a/pi-head"
-  "git:github.com/andrii-k6a/pi-nocchio"
-  "git:github.com/andrii-k6a/pi-telegram"
 )
 
 for p in "${packages[@]}"; do
