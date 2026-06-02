@@ -12,6 +12,7 @@ ln -sfn "$pi_dir/global-agent-context.md" "$agent_dir/AGENTS.md"
 
 packages=(
   "git:github.com/andrii-k6a/pi-packages"
+  "git:github.com/nicobailon/pi-mcp-adapter"
 )
 
 for p in "${packages[@]}"; do
