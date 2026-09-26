@@ -14,6 +14,10 @@ Sets up the global agent context and installs all Pi packages. Re-running is saf
 
 `global-agent-context.md` contains lightweight personal context shared with every Pi session, such as editor, shell, terminal, Git, and Pi setup notes. Keep it concise and broadly useful.
 
+## Personal assistant mode
+
+`assistant.md` shifts Pi out of coding mode into a general-purpose assistant, for requests that shouldn't be interpreted through the lens of the current directory.
+
 ## Adding a package
 
 Append it to the `packages` array in `install.sh`. Pin with `@<ref>` (e.g. `git:github.com/user/repo@v1`) for reproducibility.

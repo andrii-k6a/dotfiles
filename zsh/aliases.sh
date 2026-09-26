@@ -10,6 +10,24 @@ alias zshconfig="vim ~/.zshrc"
 alias g="git"
 alias oc="opencode"
 
+pa() {
+    local aliases_link repo_root assistant_prompt
+    aliases_link="$(readlink "$HOME/aliases.sh")" || {
+        print -u2 "~/aliases.sh is not a symlink; cannot locate the dotfiles repo."
+        return 1
+    }
+    repo_root="$(cd "$(dirname "$aliases_link")/.." && pwd)"
+    assistant_prompt="$repo_root/pi/assistant.md"
+    [[ -f "$assistant_prompt" ]] || {
+        print -u2 "Missing Pi assistant prompt: $assistant_prompt"
+        return 1
+    }
+    command pi \
+        --append-system-prompt "$assistant_prompt" \
+        --session-dir "$HOME/.pi/agent/assistant-sessions" \
+        "$@"
+}
+
 tmxhere() {
     tmx "$PWD"
 }
