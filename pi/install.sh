@@ -12,7 +12,6 @@ ln -sfn "$pi_dir/global-agent-context.md" "$agent_dir/AGENTS.md"
 
 packages=(
   "git:github.com/andrii-k6a/pi-packages"
-  "npm:pi-mcp-adapter"
   "npm:@ff-labs/pi-fff"
 )
 
