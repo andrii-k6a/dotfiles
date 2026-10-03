@@ -8,7 +8,6 @@ vim() {
 alias lsd="lsd -1X"
 alias zshconfig="vim ~/.zshrc"
 alias g="git"
-alias oc="opencode"
 
 pa() {
     local aliases_link repo_root assistant_prompt

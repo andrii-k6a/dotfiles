@@ -46,6 +46,5 @@ brew "hf"
 brew "llama.cpp"
 
 # Extra tools
-brew "opencode"
 brew "rtk"
 brew "agent-browser"

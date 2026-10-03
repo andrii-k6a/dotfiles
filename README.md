@@ -9,7 +9,7 @@ Personal dotfiles for a macOS development setup built around Ghostty, tmux, Neov
 - **Prompt and navigation:** Starship, fzf, zoxide, zsh-autosuggestions
 - **Multiplexing:** tmux with auto-attach bootstrap and a custom `tmx` session switcher
 - **Editors:** Neovim, IdeaVim
-- **Coding agents:** Pi, opencode
+- **Coding agents:** Pi
 - **Runtime managers:** fnm, pyenv, Bun, SDKMAN!
 - **CLI tools:** ripgrep, fd, bat, lsd, jq, GitHub CLI, Terraform, rtk, hf, llama.cpp
 - **Fonts:** Nerd Fonts (`FiraCode Nerd Font`, `Meslo LG Nerd Font`, `Victor Mono Nerd Font`)
