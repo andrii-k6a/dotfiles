@@ -1,162 +1,87 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Dedupe PATH-like vars. Both the string and array names are needed.
+typeset -U PATH path FPATH fpath MANPATH manpath
 
-# my custom executable scripts
-export PATH="$HOME/.local/bin:$PATH"
+# --- Homebrew (before Oh My Zsh so its completions are on fpath) --------------
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv zsh)"
+fi
 
-# go binaries default location
-export PATH="$HOME/go/bin:$PATH:"
+# --- PATH & environment ------------------------------------------------------
+export PATH="$HOME/.local/bin:$PATH"   # my scripts (tmx, ...)
+export PATH="$HOME/go/bin:$PATH"       # go install binaries
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# use neovim as default editor (not sure how it work)
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 
+# --- Oh My Zsh ---------------------------------------------------------------
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME=""   # the prompt comes from starship
+plugins=()
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+source "$ZSH/oh-my-zsh.sh"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# --- Aliases -----------------------------------------------------------------
+[[ -r $HOME/aliases.sh ]] && source "$HOME/aliases.sh"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# --- Shell tools -------------------------------------------------------------
+# zsh-autosuggestions: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#homebrew
+[[ -r $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
+  source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# fzf: key bindings and fuzzy completion
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+  # Option+C types "ç" on the macOS US layout; bind it to fzf's cd widget.
+  # https://github.com/junegunn/fzf/issues/164
+  bindkey "ç" fzf-cd-widget
+fi
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# fnm: Node version manager (switches version on cd)
+(( $+commands[fnm] )) && eval "$(fnm env --use-on-cd --shell zsh)"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+# zoxide: smarter cd (z, zi)
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+# starship: prompt
+(( $+commands[starship] )) && eval "$(starship init zsh)"
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(git zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-source $HOME/aliases.sh
-
-# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#homebrew
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
-# fzf alt c binding: https://github.com/junegunn/fzf/issues/164
-bindkey "ç" fzf-cd-widget
-
-# fnm
-eval "$(fnm env --use-on-cd --shell zsh)"
-
-# zoxide
-eval "$(zoxide init zsh)"
-
-# starship
-eval "$(starship init zsh)"
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
+# --- Language runtimes & dev tools -------------------------------------------
 # bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+if [[ -d $BUN_INSTALL ]]; then
+  [[ -s $BUN_INSTALL/_bun ]] && source "$BUN_INSTALL/_bun"   # completions
+  export PATH="$BUN_INSTALL/bin:$PATH"
+fi
 
 # deno
-. "$HOME/.deno/env"
+[[ -r $HOME/.deno/env ]] && . "$HOME/.deno/env"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+(( $+commands[pyenv] )) && eval "$(pyenv init - zsh)"
 
 # uv completions
-eval "$(uv generate-shell-completion zsh)"
+(( $+commands[uv] )) && eval "$(uv generate-shell-completion zsh)"
 
-### RANCHER DESKTOP
-export PATH="$HOME/.rd/bin:$PATH"
+# Rancher Desktop
+[[ -d $HOME/.rd/bin ]] && export PATH="$HOME/.rd/bin:$PATH"
 
-# Local overrides
-[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+# SDKMAN! must come after every other tool that changes PATH; only the local
+# overrides and the tmux bootstrap below may follow it.
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s $SDKMAN_DIR/bin/sdkman-init.sh ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-# tmux bootstrap
-source $HOME/tmux-bootstrap.sh
+# --- Local overrides & tmux --------------------------------------------------
+# These are if-blocks on purpose: `[[ ... ]] && source` would leave $? = 1 when the
+# file is missing, and starship would draw the first prompt as a failed command.
+if [[ -f $HOME/.zshrc.local ]]; then
+  source "$HOME/.zshrc.local"
+fi
 
+# tmux auto-attach: keep last, it exits this shell when tmux exits.
+if [[ -r $HOME/tmux-bootstrap.sh ]]; then
+  source "$HOME/tmux-bootstrap.sh"
+fi
