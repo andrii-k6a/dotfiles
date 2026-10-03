@@ -15,8 +15,7 @@
 
 # Fonts / GUI apps
 cask "ghostty"
-cask "font-fira-code-nerd-font"
-cask "font-meslo-lg-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 cask "font-victor-mono-nerd-font"
 
 # Shell / prompt / navigation
@@ -40,7 +39,6 @@ brew "bat"
 brew "lsd"
 brew "jq"
 brew "gh"
-brew "terraform"
 brew "go"
 brew "hf"
 brew "llama.cpp"

@@ -11,8 +11,8 @@ Personal dotfiles for a macOS development setup built around Ghostty, tmux, Neov
 - **Editors:** Neovim, IdeaVim
 - **Coding agents:** Pi
 - **Runtime managers:** fnm, pyenv, Bun, SDKMAN!
-- **CLI tools:** ripgrep, fd, bat, lsd, jq, GitHub CLI, Terraform, rtk, hf, llama.cpp
-- **Fonts:** Nerd Fonts (`FiraCode Nerd Font`, `Meslo LG Nerd Font`, `Victor Mono Nerd Font`)
+- **CLI tools:** ripgrep, fd, bat, lsd, jq, GitHub CLI, rtk, hf, llama.cpp
+- **Fonts:** Nerd Fonts (`JetBrainsMono Nerd Font` for text, `VictorMono Nerd Font` for italics)
 
 ## Repository layout
 
@@ -59,6 +59,6 @@ Install Pi package resources:
 - Local machine-specific shell overrides can live in `~/.zshrc.local`.
 - SSH setup is documented in [`ssh/README.md`](./ssh/README.md).
 - Some tools in this setup may be installed outside Homebrew. The `Brewfile` focuses on the Homebrew-managed part of the setup.
-- Fonts come from [Nerd Fonts](https://www.nerdfonts.com/) / [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts). `FiraCode Nerd Font`, `Meslo LG Nerd Font`, and `Victor Mono Nerd Font` are included in the `Brewfile`.
+- Fonts come from [Nerd Fonts](https://www.nerdfonts.com/) / [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts). `JetBrainsMono Nerd Font` and `VictorMono Nerd Font` are included in the `Brewfile`.
 - Ghostty is configured to use `VictorMono` for italic text.
 - The `Brewfile` is curated for this repo and is not a full machine dump.
