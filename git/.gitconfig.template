@@ -1,6 +1,13 @@
+# Require an explicitly configured identity
 [user]
-	name = ${GIT_USER_NAME}
-	email = ${GIT_USER_EMAIL}
+	useConfigOnly = true
+
+# Directory-based identities: customize and uncomment.
+# [includeIf "gitdir:~/projects/personal/"]
+#     path = ~/.config/git/identities/personal.gitconfig
+# [includeIf "gitdir:~/projects/work/customer/"]
+#     path = ~/.config/git/identities/customer.gitconfig
+
 [core]
 	autocrlf = input
 	editor = nvim
@@ -14,7 +21,7 @@
 [merge]
 	tool = nvim-fugitive
 [mergetool "nvim-fugitive"]
-	cmd = nvim -f -c "Gdiffsplit!" "$MERGED"
+	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 [diff]
 	tool = vimdiff
 	algorithm = histogram
@@ -51,7 +58,6 @@
 	rebase = true
 [fetch]
 	prune = true
-	pruneTags = true
 	all = true
 [tag]
 	sort = version:refname

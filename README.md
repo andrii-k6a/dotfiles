@@ -53,9 +53,6 @@ Install Pi package resources:
 
 ## Notes
 
-- `git/symlink.sh` generates `git/.gitconfig` from `git/.gitconfig.template`.
-  - It reads `GIT_USER_NAME` and `GIT_USER_EMAIL` from `../.env` if present.
-  - Otherwise it prompts interactively.
 - Local machine-specific shell overrides can live in `~/.zshrc.local`.
 - SSH setup is documented in [`ssh/README.md`](./ssh/README.md).
 - Some tools in this setup may be installed outside Homebrew. The `Brewfile` focuses on the Homebrew-managed part of the setup.
