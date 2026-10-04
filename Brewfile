@@ -10,7 +10,7 @@
 #   - Pi (via npm)
 #   - SDKMAN! (Java ecosystem tools)
 #   - Node versions installed via fnm
-#   - Python versions installed via pyenv
+#   - Python versions installed via uv
 #   - local machine overrides in ~/.zshrc.local
 
 # Fonts / GUI apps
@@ -24,8 +24,6 @@ brew "fzf"
 brew "zoxide"
 brew "starship"
 brew "fnm"
-brew "pyenv"
-brew "pipx"
 brew "uv"
 
 # Terminal / editor
