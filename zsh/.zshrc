@@ -85,3 +85,6 @@ fi
 if [[ -r $HOME/tmux-bootstrap.sh ]]; then
   source "$HOME/tmux-bootstrap.sh"
 fi
+
+# Added by @codemieai/code
+export PATH="/Users/Andrii_Kukuruza/.local/share/fnm/node-versions/v24.21.0/installation/bin:$PATH"
